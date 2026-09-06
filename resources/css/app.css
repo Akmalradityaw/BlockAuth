@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* BlockAuth v2 solid theme. Indigo ink + violet + amber. Solid colors only. */
+
+:root {
+    --brand-ink: #1e1b4b;
+    --brand-violet: #6d28d9;
+    --brand-violetdark: #5b21b6;
+    --brand-amber: #f59e0b;
+    --brand-slate: #334155;
+    --brand-paper: #f8fafc;
+    --brand-mist: #eef2ff;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+::selection {
+    background-color: var(--brand-violet);
+    color: #fff;
+}
+
+body {
+    background-color: var(--brand-paper);
+    color: var(--brand-ink);
+    font-family: 'Inter', 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.font-display,
+.type-display,
+.type-h1 {
+    font-family: 'Plus Jakarta Sans', 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+.type-display {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    line-height: 1.15;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.type-h1 {
+    font-size: clamp(1.375rem, 3vw, 1.75rem);
+    line-height: 1.25;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.type-h2 {
+    font-size: 1.25rem;
+    line-height: 1.4;
+    font-weight: 600;
+}
+
+.type-small {
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.type-caption {
+    font-size: 0.75rem;
+    line-height: 1.4;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.auth-split {
+    min-height: 100vh;
+    background-color: var(--brand-paper);
+}
+
+.auth-brand-panel {
+    background-color: var(--brand-ink);
+    color: #fff;
+}
+
+.auth-card {
+    background-color: #fff;
+    border: 1px solid #e2e8f0;
+}
+
+.app-navbar {
+    background-color: var(--brand-ink);
+    color: #fff;
+}
+
+.btn-brand {
+    background-color: var(--brand-violet);
+    color: #fff;
+    border-radius: 0.65rem;
+    font-weight: 600;
+}
+
+.btn-brand:hover {
+    background-color: var(--brand-violetdark);
+}
+
+.card-shell {
+    background-color: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 1rem;
+}
+
+.table-shell {
+    overflow-x: auto;
+    border: 1px solid #e2e8f0;
+    border-radius: 1rem;
+    background: #fff;
+}
+
+.badge-role-superadmin {
+    background-color: var(--brand-amber);
+    color: var(--brand-ink);
+}
+
+.badge-role-user {
+    background-color: var(--brand-mist);
+    color: var(--brand-violet);
+}
+
+.input-brand {
+    border-color: #cbd5e1;
+}
+
+.input-brand:focus {
+    border-color: var(--brand-violet);
+    outline: 2px solid var(--brand-violet);
+}
