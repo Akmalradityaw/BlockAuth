@@ -273,4 +273,4 @@ npm run build                     # build produksi (terverifikasi sukses)
 
 ## Lisensi
 
-MIT.
+MIT. Lihat `LICENSE.md`.
