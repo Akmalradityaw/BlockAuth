@@ -1,0 +1,70 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+    content: [
+        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+        './storage/framework/views/*.php',
+        './resources/views/**/*.blade.php',
+        './resources/js/**/*.jsx',
+        './resources/js/**/*.js',
+    ],
+    theme: {
+        extend: {
+            colors: {
+                brand: {
+                    ink: '#1E1B4B',
+                    violet: '#6D28D9',
+                    violetdark: '#5B21B6',
+                    amber: '#F59E0B',
+                    amberdark: '#B45309',
+                    slate: '#334155',
+                    paper: '#F8FAFC',
+                    mist: '#EEF2FF',
+                    white: '#FFFFFF',
+                },
+            },
+            fontFamily: {
+                sans: ['Inter', 'Plus Jakarta Sans', 'Instrument Sans', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                display: ['Plus Jakarta Sans', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            },
+            fontSize: {
+                display: ['clamp(1.75rem, 4vw, 2.5rem)', { lineHeight: '1.15', fontWeight: '800' }],
+                h1: ['clamp(1.375rem, 3vw, 1.75rem)', { lineHeight: '1.25', fontWeight: '700' }],
+                h2: ['1.25rem', { lineHeight: '1.4', fontWeight: '600' }],
+                body: ['1rem', { lineHeight: '1.6', fontWeight: '400' }],
+                small: ['0.875rem', { lineHeight: '1.5', fontWeight: '400' }],
+                caption: ['0.75rem', { lineHeight: '1.4', fontWeight: '600' }],
+            },
+            maxWidth: {
+                shell: '72rem',
+                form: '28rem',
+            },
+        },
+    },
+    plugins: [require('daisyui')],
+    daisyui: {
+        themes: [
+            {
+                blockauth: {
+                    primary: '#6D28D9',
+                    'primary-content': '#FFFFFF',
+                    secondary: '#1E1B4B',
+                    'secondary-content': '#FFFFFF',
+                    accent: '#F59E0B',
+                    'accent-content': '#1E1B4B',
+                    neutral: '#334155',
+                    'neutral-content': '#FFFFFF',
+                    'base-100': '#FFFFFF',
+                    'base-200': '#F8FAFC',
+                    'base-300': '#EEF2FF',
+                    'base-content': '#1E1B4B',
+                    info: '#6D28D9',
+                    success: '#15803D',
+                    warning: '#B45309',
+                    error: '#B91C1C',
+                },
+            },
+            'light',
+        ],
+        darkTheme: 'light',
+    },
+};
