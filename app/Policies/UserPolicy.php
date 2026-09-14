@@ -8,7 +8,7 @@ class UserPolicy
 {
     public function viewAny(User $viewer): bool
     {
-        return $viewer->isSuperAdmin();
+        return $viewer->can('users:read');
     }
 
     public function update(User $viewer, User $target): bool

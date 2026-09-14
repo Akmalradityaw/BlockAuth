@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -37,5 +38,17 @@ class UserController extends Controller
             'users' => $users,
             'stats' => $stats,
         ]);
+    }
+
+    public function destroy(Request $request, User $user)
+    {
+        Gate::authorize('users:delete');
+
+        abort_if($user->is($request->user()), 403, 'Tidak bisa menghapus akun sendiri.');
+
+        $name = $user->name;
+        $user->delete();
+
+        return back()->with('success', "Pengguna {$name} berhasil dihapus.");
     }
 }
