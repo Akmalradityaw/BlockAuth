@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Actions\Auth\HandleSocialiteCallbackAction;
 use App\DataTransferObjects\SocialiteData;
 use App\Http\Controllers\Controller;
+use App\Models\Setting;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -34,11 +35,14 @@ class SocialiteController extends Controller
 
         Auth::login($user, true);
 
-        return redirect()->intended(route('dashboard'));
+        return redirect()
+            ->intended(route('dashboard'))
+            ->with('success', 'Berhasil masuk dengan ' . ucfirst($provider) . '.');
     }
 
     protected function ensureProviderAllowed(string $provider): void
     {
         abort_unless(in_array($provider, ['google', 'github']), 404);
+        abort_unless(Setting::get('auth.' . $provider), 404);
     }
 }

@@ -1,7 +1,7 @@
 import { Head, useForm } from '@inertiajs/react';
 import AuthLayout from '@/Layouts/AuthLayout';
-import FormInput from '@/Components/FormInput';
-import SolidButton from '@/Components/SolidButton';
+import FormInput from '@/Components/forms/FormInput';
+import SolidButton from '@/Components/forms/SolidButton';
 
 export default function ResetPassword({ token, email }) {
     const { data, setData, post, processing, errors } = useForm({

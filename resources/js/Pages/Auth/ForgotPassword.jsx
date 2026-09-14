@@ -1,7 +1,7 @@
 import { Head, Link, useForm } from '@inertiajs/react';
 import AuthLayout from '@/Layouts/AuthLayout';
-import FormInput from '@/Components/FormInput';
-import SolidButton from '@/Components/SolidButton';
+import FormInput from '@/Components/forms/FormInput';
+import SolidButton from '@/Components/forms/SolidButton';
 
 export default function ForgotPassword({ status }) {
     const { data, setData, post, processing, errors } = useForm({ email: '' });
@@ -14,7 +14,6 @@ export default function ForgotPassword({ status }) {
     return (
         <AuthLayout eyebrow="Pemulihan" title="Lupa password" subtitle="Kami kirim link reset ke email Anda.">
             <Head title="Lupa Password" />
-            {status && <div className="alert mb-4 bg-[#EEF2FF] text-sm text-[#1E1B4B]">{status}</div>}
             <form onSubmit={submit} className="flex flex-col gap-3">
                 <FormInput
                     label="Email terdaftar"

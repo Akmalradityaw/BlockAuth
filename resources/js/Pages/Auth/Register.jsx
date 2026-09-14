@@ -1,9 +1,9 @@
 import { Head, Link, useForm } from '@inertiajs/react';
 import AuthLayout from '@/Layouts/AuthLayout';
-import FormInput from '@/Components/FormInput';
-import SolidButton from '@/Components/SolidButton';
+import FormInput from '@/Components/forms/FormInput';
+import SolidButton from '@/Components/forms/SolidButton';
 
-export default function Register() {
+export default function Register({ authProviders = { google: true, github: true } }) {
     const { data, setData, post, processing, errors } = useForm({
         name: '',
         email: '',
@@ -60,19 +60,27 @@ export default function Register() {
                     Buat Akun
                 </SolidButton>
             </form>
-            <div className="my-4 flex items-center gap-3">
-                <span className="h-px flex-1 bg-slate-200" />
-                <span className="type-caption text-[#334155]">atau daftar dengan</span>
-                <span className="h-px flex-1 bg-slate-200" />
-            </div>
-            <div className="grid grid-cols-2 gap-2">
-                <a href="/oauth/google/redirect" className="btn border border-slate-300 bg-white text-[#1E1B4B]">
-                    Google
-                </a>
-                <a href="/oauth/github/redirect" className="btn border-0 bg-[#1E1B4B] text-white">
-                    GitHub
-                </a>
-            </div>
+            {(authProviders.google || authProviders.github) && (
+                <>
+                    <div className="my-4 flex items-center gap-3">
+                        <span className="h-px flex-1 bg-slate-200" />
+                        <span className="type-caption text-[#334155]">atau daftar dengan</span>
+                        <span className="h-px flex-1 bg-slate-200" />
+                    </div>
+                    <div className={`grid gap-2 ${authProviders.google && authProviders.github ? 'grid-cols-2' : 'grid-cols-1'}`}>
+                        {authProviders.google && (
+                            <a href="/oauth/google/redirect" className="btn border border-slate-300 bg-white text-[#1E1B4B]">
+                                Google
+                            </a>
+                        )}
+                        {authProviders.github && (
+                            <a href="/oauth/github/redirect" className="btn border-0 bg-[#1E1B4B] text-white">
+                                GitHub
+                            </a>
+                        )}
+                    </div>
+                </>
+            )}
             <p className="type-small mt-4 text-center text-[#334155]">
                 Sudah punya akun?{' '}
                 <Link href="/login" className="font-semibold text-[#6D28D9]">
