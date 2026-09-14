@@ -1,9 +1,8 @@
-import { Head, useForm } from '@inertiajs/react';
-import AppLayout from '@/Layouts/AppLayout';
-import FormInput from '@/Components/FormInput';
-import SolidButton from '@/Components/SolidButton';
+import { useForm } from '@inertiajs/react';
+import FormInput from '@/Components/forms/FormInput';
+import SolidButton from '@/Components/forms/SolidButton';
 
-export default function UpdateProfileForm({ user, status }) {
+export default function UpdateProfileForm({ user }) {
     const { data, setData, patch, processing, errors } = useForm({
         name: user.name || '',
         email: user.email || '',
@@ -19,7 +18,6 @@ export default function UpdateProfileForm({ user, status }) {
         <section className="card-shell p-4 sm:p-6">
             <h2 className="type-h2 text-[#1E1B4B]">Data diri</h2>
             <p className="type-small mt-1 text-[#334155]">Nama tampil di seluruh aplikasi. Email dipakai untuk login.</p>
-            {status && <div className="alert mt-3 bg-[#EEF2FF] text-sm text-[#1E1B4B]">{status}</div>}
             <form onSubmit={submit} className="mt-4 flex flex-col gap-3">
                 <FormInput
                     label="Nama lengkap"

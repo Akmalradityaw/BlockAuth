@@ -1,4 +1,4 @@
-import AvatarUploader from '@/Components/AvatarUploader';
+import AvatarUploader from '@/Components/forms/AvatarUploader';
 
 export default function AvatarForm({ user }) {
     return (

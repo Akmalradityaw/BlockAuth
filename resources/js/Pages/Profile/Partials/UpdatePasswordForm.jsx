@@ -1,6 +1,6 @@
 import { useForm } from '@inertiajs/react';
-import FormInput from '@/Components/FormInput';
-import SolidButton from '@/Components/SolidButton';
+import FormInput from '@/Components/forms/FormInput';
+import SolidButton from '@/Components/forms/SolidButton';
 
 export default function UpdatePasswordForm() {
     const { data, setData, put, processing, errors, reset } = useForm({

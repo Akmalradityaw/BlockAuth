@@ -11,6 +11,6 @@ class PasswordController extends Controller
     {
         $action->execute($request->user(), $request->validated()['password']);
 
-        return back()->with('status', 'Password berhasil diperbarui.');
+        return back()->with('success', 'Password berhasil diperbarui.');
     }
 }

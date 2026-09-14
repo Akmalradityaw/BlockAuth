@@ -29,6 +29,6 @@ class ProfileController extends Controller
             UpdateProfileData::fromArray($request->validated())
         );
 
-        return back()->with('status', 'Profil berhasil diperbarui.');
+        return back()->with('success', 'Profil berhasil diperbarui.');
     }
 }

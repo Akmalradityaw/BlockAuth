@@ -14,6 +14,6 @@ class AvatarController extends Controller
 
         $action->execute($request->user(), $request->file('avatar'));
 
-        return back()->with('status', 'Avatar berhasil diperbarui.');
+        return back()->with('success', 'Avatar berhasil diperbarui.');
     }
 }

@@ -5,7 +5,7 @@ import AvatarForm from './Partials/AvatarForm';
 import UpdatePasswordForm from './Partials/UpdatePasswordForm';
 
 export default function Edit() {
-    const { auth, flash } = usePage().props;
+    const { auth } = usePage().props;
     const user = auth.user;
 
     return (
@@ -15,12 +15,12 @@ export default function Edit() {
             desc="Kelola data diri, foto, dan password dalam satu halaman responsif."
         >
             <Head title="Edit Profil" />
-            <div className="grid gap-4 lg:grid-cols-5">
-                <div className="flex flex-col gap-4 lg:col-span-3">
-                    <UpdateProfileForm user={user} status={flash?.status} />
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-8">
+                <div className="flex flex-col gap-4 lg:col-span-8">
+                    <UpdateProfileForm user={user} />
                     <UpdatePasswordForm />
                 </div>
-                <div className="lg:col-span-2">
+                <div className="lg:col-span-4">
                     <div className="lg:sticky lg:top-20">
                         <AvatarForm user={user} />
                     </div>
