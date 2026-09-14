@@ -22,3 +22,5 @@ yarn-error.log
 /.vscode
 /.zed
 /.codegraph
+/.playwright-mcp/
+/bootstrap/cache/*
