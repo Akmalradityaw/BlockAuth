@@ -34,6 +34,24 @@ class DashboardController extends Controller
             ],
             'recentUsers' => $recent,
             'isSuperAdmin' => auth()->user()->isSuperAdmin(),
+            'chart' => $this->registrationsChart(),
         ]);
+    }
+
+    protected function registrationsChart(): array
+    {
+        // ponytail: 14-day window hardcoded; add range param if date filtering needed.
+        $counts = User::selectRaw('DATE(created_at) as day, COUNT(*) as total')
+            ->where('created_at', '>=', now()->subDays(13)->startOfDay())
+            ->groupBy('day')
+            ->orderBy('day')
+            ->pluck('total', 'day');
+
+        $days = collect(range(13, 0))->map(fn ($i) => now()->subDays($i));
+
+        return [
+            'labels' => $days->map(fn ($d) => $d->format('d M'))->all(),
+            'data' => $days->map(fn ($d) => (int) ($counts[$d->format('Y-m-d')] ?? 0))->all(),
+        ];
     }
 }

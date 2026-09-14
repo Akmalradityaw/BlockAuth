@@ -1,12 +1,10 @@
 import { Head, Link } from '@inertiajs/react';
 import AppLayout from '@/Layouts/AppLayout';
-import { RoleBadge, StatCard } from '@/Components/Ui';
+import { RoleBadge, StatCard } from '@/Components/data/Ui';
+import RegistrationsChart from '@/Components/data/RegistrationsChart';
+import { initials } from '@/lib/ui';
 
-function initials(name) {
-    return (name || '?').charAt(0).toUpperCase();
-}
-
-export default function Dashboard({ stats, recentUsers = [], isSuperAdmin }) {
+export default function Dashboard({ stats, recentUsers = [], isSuperAdmin, chart }) {
     return (
         <AppLayout
             eyebrow="Ringkasan"
@@ -29,7 +27,13 @@ export default function Dashboard({ stats, recentUsers = [], isSuperAdmin }) {
                 <StatCard label="Terverifikasi" value={stats.verified} note="Email sudah dikonfirmasi" />
                 <StatCard label="SuperAdmin" value={stats.admins} note="Akses penuh ke data pengguna" />
             </div>
-            <section className="card-shell mt-6 p-4 sm:p-6">
+            <section className="card-shell mt-4 p-4 sm:p-6">
+                <h2 className="type-h2 text-[#1E1B4B]">Pendaftar 14 hari terakhir</h2>
+                <div className="mt-3">
+                    <RegistrationsChart labels={chart.labels} data={chart.data} />
+                </div>
+            </section>
+            <section className="card-shell mt-4 p-4 sm:p-6">
                 <div className="mb-4 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
                     <h2 className="type-h2 text-[#1E1B4B]">Pengguna terbaru</h2>
                     {isSuperAdmin && (

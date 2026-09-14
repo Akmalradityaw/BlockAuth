@@ -1,24 +1,55 @@
-import { Head, Link } from '@inertiajs/react';
+import { Head, Link, router, usePage } from '@inertiajs/react';
 import AppLayout from '@/Layouts/AppLayout';
-import { RoleBadge, StatCard } from '@/Components/Ui';
-
-function initials(name) {
-    return (name || '?').charAt(0).toUpperCase();
-}
+import { fire } from '@/Components/feedback/Swal';
+import { hideLoading, showLoading } from '@/Components/feedback/LoadingOverlay';
+import { RoleBadge, StatCard } from '@/Components/data/Ui';
+import { can } from '@/lib/can';
+import { initials } from '@/lib/ui';
 
 export default function UserIndex({ users, stats }) {
+    const { auth } = usePage().props;
+    const perms = auth?.permissions || [];
+    const canDelete = can(perms, 'users:delete');
+    const canManage = can(perms, 'roles:manage');
+
+    async function askDelete(u) {
+        const { isConfirmed } = await fire({
+            title: 'Hapus pengguna',
+            text: `Hapus ${u.name} (${u.email}) secara permanen?`,
+            icon: 'warning',
+            confirmText: 'Ya, hapus',
+            showCancelButton: true,
+        });
+        if (isConfirmed) {
+            showLoading('Menghapus pengguna...');
+            // Auto refresh: respons DELETE me-reload daftar dari server.
+            router.delete(`/users/${u.id}`, {
+                preserveScroll: true,
+                onFinish: () => hideLoading(),
+            });
+        }
+    }
+
     return (
         <AppLayout
             eyebrow="Direktori"
             title="Data Pengguna"
             desc="Daftar akun terdaftar dengan role, status verifikasi, dan tanggal bergabung."
             actions={
-                <Link href="/dashboard" className="btn btn-sm border border-slate-300 bg-white text-[#1E1B4B]">
-                    Kembali ke dashboard
-                </Link>
+                <>
+                    {canManage && (
+                        <Link href="/roles/permissions" className="btn btn-sm border-0 bg-[#6D28D9] text-white">
+                            Kelola Akses
+                        </Link>
+                    )}
+                    <Link href="/dashboard" className="btn btn-sm border border-slate-300 bg-white text-[#1E1B4B]">
+                        Kembali ke dashboard
+                    </Link>
+                </>
             }
         >
             <Head title="Data Pengguna" />
+
             <div className="grid gap-4 sm:grid-cols-3">
                 <StatCard label="Total" value={stats.total} />
                 <StatCard label="Terverifikasi" value={stats.verified} />
@@ -45,6 +76,15 @@ export default function UserIndex({ users, stats }) {
                                 </span>
                             </div>
                             {u.bio && <p className="type-small mt-1 line-clamp-2 text-[#334155]">{u.bio}</p>}
+                            {canDelete && u.id !== auth.user.id && (
+                                <button
+                                    type="button"
+                                    onClick={() => askDelete(u)}
+                                    className="btn btn-xs mt-2 border-0 bg-red-800 text-white"
+                                >
+                                    Hapus
+                                </button>
+                            )}
                         </div>
                     </article>
                 ))}
@@ -59,6 +99,7 @@ export default function UserIndex({ users, stats }) {
                             <th>Role</th>
                             <th>Status</th>
                             <th>Bergabung</th>
+                            {canDelete && <th>Aksi</th>}
                         </tr>
                     </thead>
                     <tbody>
@@ -89,6 +130,21 @@ export default function UserIndex({ users, stats }) {
                                     </span>
                                 </td>
                                 <td className="type-small text-[#334155]">{u.joined}</td>
+                                {canDelete && (
+                                    <td>
+                                        {u.id !== auth.user.id ? (
+                                            <button
+                                                type="button"
+                                                onClick={() => askDelete(u)}
+                                                className="btn btn-xs border-0 bg-red-800 text-white"
+                                            >
+                                                Hapus
+                                            </button>
+                                        ) : (
+                                            <span className="type-small text-[#334155]">Anda</span>
+                                        )}
+                                    </td>
+                                )}
                             </tr>
                         ))}
                     </tbody>

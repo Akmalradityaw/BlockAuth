@@ -11,8 +11,15 @@ class RoleSeeder extends Seeder
 {
     public function run(): void
     {
-        $superAdmin = Role::firstOrCreate(['name' => 'SuperAdmin']);
-        Role::firstOrCreate(['name' => 'User']);
+        // Role SuperAdmin wajib ada lebih dulu sebelum dipakai di seeder lain.
+        $superAdmin = Role::firstOrCreate(
+            ['name' => 'SuperAdmin', 'guard_name' => 'web'],
+            [
+                'label' => 'Super Admin',
+                'description' => 'Pemilik sistem, akses penuh.',
+                'is_system' => true,
+            ]
+        );
 
         $admin = User::firstOrCreate(
             ['email' => 'admin@blockauth.test'],
@@ -20,6 +27,7 @@ class RoleSeeder extends Seeder
                 'name' => 'Super Admin',
                 'password' => Hash::make('password'),
                 'email_verified_at' => now(),
+                'bio' => 'Akun administrator utama.',
             ]
         );
 
