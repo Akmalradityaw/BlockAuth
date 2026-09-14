@@ -175,7 +175,8 @@ php artisan migrate --seed
 php artisan storage:link
 
 npm run dev
-# atau: composer dev
+# atau: composer dev          (serve + queue + log + vite)
+# atau: composer dev:lite     (serve + vite saja)
 ```
 
 Build produksi:
@@ -224,7 +225,11 @@ Seeder (`DatabaseSeeder` memanggil `RoleSeeder` lalu `UserSeeder`):
 | Akun | Email | Password | Role |
 |---|---|---|---|
 | Admin | `admin@blockauth.test` | `password` | SuperAdmin |
-| Contoh (12 akun) | acak dari factory | `password` | User, 3 di antaranya unverified |
+| Demo Manager | `manager.demo@gmail.com` | `password` | Manager |
+| Demo Editor | `editor.demo@gmail.com` | `password` | Editor |
+| Demo Staff | `staff.demo@gmail.com` | `password` | Staff |
+| Demo Viewer | `viewer.demo@gmail.com` | `password` | Viewer |
+| Contoh (8 akun) | nama Indonesia acak `@gmail.com` | `password` | Staff |
 
 ---
 

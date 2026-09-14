@@ -1,5 +1,5 @@
 RULES - BlockAuth
-Versi: 2.0
+Versi: 2.1
 
 1. SOLID & Clean Code
 - Single Responsibility: Setiap class/function hanya memiliki satu tugas.
@@ -38,12 +38,25 @@ Versi: 2.0
 - Layouts: resources/js/Layouts
 
 6. Otorisasi
-- Gunakan Spatie Permission untuk RBAC.
-- Buat Policy untuk update profil.
+- Gunakan Spatie Permission untuk RBAC, tanpa tabel custom. Permission bernama resource:action (contoh users:read, roles:manage).
+- Model role kustom: App\Models\Role (label, description, is_system). Daftarkan di config/permission.php.
+- Untuk daftar permission user, pakai getAllPermissions (direct + via role). Jangan pakai getPermissionNames karena hanya direct.
+- Guard per aksi via Gate::authorize di controller, bukan sekadar blokir halaman.
+- Buat Policy untuk update profil dan direktori user.
 - Gunakan middleware auth, verified, guest sesuai kebutuhan.
+- Matriks permission hanya untuk SuperAdmin (roles:manage). Kunci roles:manage pada role sistem di UI.
 
-7. Ketentuan Lain
-- Gunakan Laravel 12, PHP 8.3+.
+7. Settings dan Feedback UI
+- Konfigurasi runtime (toggle OAuth) disimpan di tabel settings via model Setting, bukan config file. Default ON jika baris belum ada.
+- Toggle bersifat optimistik: flip langsung di layar, revert otomatis jika request gagal.
+- Toast global terpusat di AppLayout untuk flash sukses dan error validasi. Jangan render Toast per halaman.
+- Pertanyaan blocking (hapus, konfirmasi) pakai `fire()` dari Components/Swal (Promise isConfirmed). Dilarang `confirm()` native.
+- Halaman auth (di luar AppLayout) memakai Alert inline untuk pesan status.
+- LoadingOverlay hanya untuk operasi lambat (upload avatar), bukan navigasi biasa.
+
+8. Ketentuan Lain
+- Gunakan Laravel 12, PHP ^8.2.
 - Gunakan Inertia.js + React.
 - Gunakan Tailwind CSS v3 + daisyUI.
 - Semua upload avatar disimpan di storage/app/public/avatars dan di-resize ke 300x300.
+- Chart memakai Chart.js + react-chartjs-2, warna solid sesuai palet, tanpa legend berlebih.
