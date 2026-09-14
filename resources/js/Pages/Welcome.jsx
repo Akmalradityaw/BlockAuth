@@ -1,6 +1,6 @@
 import { Head, Link } from '@inertiajs/react';
-import Navbar from '@/Components/Navbar';
-import { SectionTitle } from '@/Components/Ui';
+import Navbar from '@/Components/layout/Navbar';
+import { SectionTitle } from '@/Components/data/Ui';
 
 const features = [
     { title: 'Auth lengkap', desc: 'Registrasi, login session, reset via email, dan logout aman.' },
@@ -16,8 +16,8 @@ export default function Welcome() {
         <div className="min-h-screen bg-[#F8FAFC]">
             <Head title="Selamat Datang" />
             <Navbar />
-            <main className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
-                <section className="card-shell grid gap-6 p-6 sm:p-10 lg:grid-cols-2 lg:items-center">
+            <main className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 sm:py-8">
+                <section className="card-shell grid gap-6 p-5 sm:p-8 lg:grid-cols-2 lg:items-center">
                     <div>
                         <p className="type-caption text-[#6D28D9]">Laravel 12 + Inertia React</p>
                         <h1 className="type-display mt-2 text-[#1E1B4B]">BlockAuth v2 dengan tipografi responsif</h1>
@@ -62,7 +62,7 @@ export default function Welcome() {
                         <p className="type-caption mt-3 text-white/60">Caption untuk label dan eyebrow</p>
                     </div>
                 </section>
-                <section className="mt-8">
+                <section className="mt-6">
                     <SectionTitle
                         eyebrow="Fitur"
                         title="Semua yang dibutuhkan modul auth"
@@ -79,7 +79,7 @@ export default function Welcome() {
                 </section>
             </main>
             <footer className="bg-[#1E1B4B] text-white">
-                <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-2 px-4 py-5 sm:flex-row sm:px-6">
+                <div className="mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-2 px-4 py-4 sm:flex-row sm:px-6">
                     <span className="flex items-center gap-2">
                         <span className="flex h-7 w-7 items-center justify-center rounded-md bg-[#F59E0B] text-sm font-extrabold text-[#1E1B4B]">
                             B

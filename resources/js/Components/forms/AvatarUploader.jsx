@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useForm } from '@inertiajs/react';
-import SolidButton from './SolidButton';
+import SolidButton from '@/Components/forms/SolidButton';
+import { hideLoading, showLoading } from '@/Components/feedback/LoadingOverlay';
 
 export default function AvatarUploader({ currentUrl }) {
     const [preview, setPreview] = useState(currentUrl || null);
@@ -15,7 +16,11 @@ export default function AvatarUploader({ currentUrl }) {
 
     function onSubmit(e) {
         e.preventDefault();
-        post('/profile/avatar', { forceFormData: true });
+        showLoading('Mengunggah avatar...');
+        post('/profile/avatar', {
+            forceFormData: true,
+            onFinish: () => hideLoading(),
+        });
     }
 
     return (
