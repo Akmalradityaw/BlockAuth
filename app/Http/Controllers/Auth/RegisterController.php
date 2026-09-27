@@ -29,6 +29,15 @@ class RegisterController extends Controller
             RegisterData::fromArray($request->validated())
         );
 
+        event(new \Illuminate\Auth\Events\Registered($user));
+
+        \App\Services\WebhookDispatcher::dispatch('user.registered', [
+            'id' => $user->id,
+            'name' => $user->name,
+            'email' => $user->email,
+            'created_at' => now()->toIso8601String(),
+        ]);
+
         Auth::login($user);
         $request->session()->regenerate();
 

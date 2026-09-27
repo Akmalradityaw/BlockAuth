@@ -7,13 +7,14 @@ use Illuminate\Validation\ValidationException;
 
 class AuthenticateUserAction
 {
-    public function execute(string $email, string $password, bool $remember = false): void
+    public function execute(string $login, string $password, bool $remember = false): void
     {
-        $credentials = ['email' => $email, 'password' => $password];
+        $fieldType = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        $credentials = [$fieldType => $login, 'password' => $password];
 
         if (! Auth::attempt($credentials, $remember)) {
             throw ValidationException::withMessages([
-                'email' => 'Kredensial yang diberikan tidak cocok dengan data kami.',
+                'login' => 'Kredensial yang diberikan tidak cocok dengan data kami.',
             ]);
         }
     }

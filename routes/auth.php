@@ -32,8 +32,28 @@ Route::middleware('guest')->group(function () {
     Route::get('/oauth/{provider}/callback', [SocialiteController::class, 'callback'])
         ->whereIn('provider', ['google', 'github'])
         ->name('oauth.callback');
+
+    Route::get('/two-factor-challenge', [\App\Http\Controllers\Auth\TwoFactorChallengeController::class, 'create'])
+        ->name('two-factor.challenge');
+    Route::post('/two-factor-challenge', [\App\Http\Controllers\Auth\TwoFactorChallengeController::class, 'store']);
+
+    Route::post('/passkeys/login-options', [\App\Http\Controllers\PasskeyController::class, 'generateAuthOptions'])
+        ->name('passkeys.login-options');
+    Route::post('/passkeys/login', [\App\Http\Controllers\PasskeyController::class, 'verifyAuth'])
+        ->name('passkeys.login');
 });
 
 Route::middleware('auth')->group(function () {
+    Route::get('/verify-email', \App\Http\Controllers\Auth\EmailVerificationPromptController::class)
+        ->name('verification.notice');
+
+    Route::get('/verify-email/{id}/{hash}', \App\Http\Controllers\Auth\VerifyEmailController::class)
+        ->middleware(['signed', 'throttle:6,1'])
+        ->name('verification.verify');
+
+    Route::post('/email/verification-notification', [\App\Http\Controllers\Auth\EmailVerificationNotificationController::class, 'store'])
+        ->middleware('throttle:6,1')
+        ->name('verification.send');
+
     Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
 });

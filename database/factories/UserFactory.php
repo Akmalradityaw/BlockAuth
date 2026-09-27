@@ -20,6 +20,7 @@ class UserFactory extends Factory
 
         return [
             'name' => $name,
+            'username' => Str::slug($name, '_') . fake()->unique()->randomNumber(3, true),
             'email' => Str::slug($name, '.') . fake()->unique()->randomNumber(2, true) . '@gmail.com',
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
