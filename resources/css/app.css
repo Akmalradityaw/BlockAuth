@@ -134,6 +134,166 @@ body {
 }
 
 /* ============================================================
+   Dark Mode System
+   ============================================================ */
+
+.dark {
+    color-scheme: dark;
+    --brand-paper: #0b0f19;
+    --brand-ink: #f8fafc;
+    --brand-slate: #94a3b8;
+    --brand-mist: #1e1b4b;
+}
+
+.dark body {
+    background-color: #0b0f19;
+    color: #f8fafc;
+}
+
+.dark .app-navbar,
+.dark .auth-brand-panel {
+    background-color: #0b0f19 !important;
+    border-color: #1e293b !important;
+    color: #f8fafc !important;
+}
+
+.dark .card-shell {
+    background-color: #0f172a;
+    border-color: #1e293b;
+    color: #f8fafc;
+}
+
+.dark .table-shell {
+    background-color: #0f172a;
+    border-color: #1e293b;
+    color: #f8fafc;
+}
+
+.dark .auth-split {
+    background-color: #0b0f19;
+}
+
+.dark .auth-card {
+    background-color: #0f172a;
+    border-color: #1e293b;
+    color: #f8fafc;
+}
+
+.dark .modal-box {
+    background-color: #0f172a !important;
+    border-color: #1e293b !important;
+    color: #f8fafc !important;
+}
+
+.dark .type-h1,
+.dark .type-h2,
+.dark .type-display {
+    color: #f8fafc;
+}
+
+.dark .type-small {
+    color: #94a3b8;
+}
+
+.dark .badge-role-user {
+    background-color: rgba(109, 40, 217, 0.25);
+    color: #c4b5fd;
+}
+
+.dark .input-brand {
+    background-color: #1e293b;
+    border-color: #334155;
+    color: #f8fafc;
+}
+
+.dark .input-brand:focus {
+    border-color: #8b5cf6;
+    outline: 2px solid #8b5cf6;
+}
+
+.dark .text-\[\#1E1B4B\],
+.dark .text-\[\#1e1b4b\] {
+    color: #f8fafc !important;
+}
+
+.dark .text-\[\#334155\] {
+    color: #94a3b8 !important;
+}
+
+.dark .bg-\[\#F8FAFC\],
+.dark .bg-\[\#f8fafc\] {
+    background-color: #0b0f19 !important;
+}
+
+.dark .table thead tr {
+    background-color: #1e293b !important;
+    color: #f8fafc !important;
+    border-color: #334155 !important;
+}
+
+.dark .table tbody tr {
+    border-color: #1e293b !important;
+}
+
+.dark .table tbody tr:hover {
+    background-color: rgba(30, 41, 59, 0.5) !important;
+}
+
+.dark select option {
+    background-color: #0f172a;
+    color: #f8fafc;
+}
+
+.dark .fixed.inset-0 .bg-white {
+    background-color: #0f172a !important;
+    border-color: #1e293b !important;
+    color: #f8fafc !important;
+}
+
+.dark input:not([type="checkbox"]):not([type="radio"]),
+.dark select,
+.dark textarea {
+    background-color: #1e293b;
+    border-color: #334155;
+    color: #f8fafc;
+}
+
+.dark input:not([type="checkbox"]):not([type="radio"]):focus,
+.dark select:focus,
+.dark textarea:focus {
+    border-color: #8b5cf6;
+    outline-color: #8b5cf6;
+}
+
+.dark .border-slate-100,
+.dark .border-slate-200 {
+    border-color: #1e293b !important;
+}
+
+.dark .divide-slate-100 > :not([hidden]) ~ :not([hidden]),
+.dark .divide-slate-200 > :not([hidden]) ~ :not([hidden]) {
+    border-color: #1e293b !important;
+}
+
+.dark ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.dark ::-webkit-scrollbar-track {
+    background: #0b0f19;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+}
+
+/* ============================================================
    Toast & Loading overlay (center)
    ============================================================ */
 

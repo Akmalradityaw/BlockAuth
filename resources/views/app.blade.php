@@ -10,11 +10,26 @@
         rel="stylesheet"
     >
     <title inertia>{{ config('app.name', 'BlockAuth') }}</title>
+    <script>
+        (function() {
+            try {
+                var theme = localStorage.getItem('theme');
+                var isDark = theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches);
+                if (isDark) {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.setAttribute('data-theme', 'blockauth-dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    document.documentElement.setAttribute('data-theme', 'blockauth');
+                }
+            } catch (e) {}
+        })();
+    </script>
     @viteReactRefresh
     @vite(['resources/css/app.css', 'resources/js/app.jsx'])
     @inertiaHead
 </head>
-<body class="bg-[#F8FAFC] text-[#1E1B4B] antialiased">
+<body class="bg-[#F8FAFC] text-[#1E1B4B] dark:bg-[#0B0F19] dark:text-slate-100 antialiased transition-colors duration-150">
     @inertia
 </body>
 </html>

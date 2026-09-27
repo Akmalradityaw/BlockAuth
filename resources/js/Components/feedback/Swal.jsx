@@ -99,7 +99,7 @@ export default function SwalHost() {
             onClick={dismiss}
         >
             <div
-                className="ba-anim-in relative w-full max-w-md overflow-hidden rounded-3xl bg-white px-6 pb-6 pt-8 text-center shadow-2xl"
+                className="ba-anim-in relative w-full max-w-md overflow-hidden rounded-3xl bg-white dark:bg-slate-900 border border-transparent dark:border-slate-800 px-6 pb-6 pt-8 text-center shadow-2xl"
                 onClick={(e) => e.stopPropagation()}
             >
                 <span className={`absolute inset-x-0 top-0 h-1.5 ${style.accent}`} />
@@ -110,11 +110,11 @@ export default function SwalHost() {
                     {style.glyph}
                 </span>
 
-                <h3 id="swal-title" className="mt-4 text-lg font-bold text-[#1E1B4B]">
+                <h3 id="swal-title" className="mt-4 text-lg font-bold text-[#1E1B4B] dark:text-slate-100">
                     {state.title}
                 </h3>
                 {state.text && (
-                    <p className="mt-2 text-sm leading-relaxed text-slate-600">{state.text}</p>
+                    <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{state.text}</p>
                 )}
 
                 <div className={`mt-6 grid gap-2 ${state.showCancelButton ? 'grid-cols-2' : 'grid-cols-1'}`}>
@@ -122,7 +122,7 @@ export default function SwalHost() {
                         <button
                             type="button"
                             onClick={dismiss}
-                            className="btn border border-slate-300 bg-white text-[#1E1B4B] hover:bg-slate-50"
+                            className="btn border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-[#1E1B4B] dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700"
                         >
                             {state.cancelText}
                         </button>

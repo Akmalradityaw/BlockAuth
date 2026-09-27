@@ -7,8 +7,8 @@ function NavBtn({ href, current, onGo, children, tone = 'ghost' }) {
     const active = isActive(current, href);
     const base = 'btn btn-sm border-0 no-animation font-semibold';
     const tones = {
-        ghost: active ? 'bg-white text-[#1E1B4B]' : 'bg-white/10 text-white hover:bg-white/20',
-        solid: 'bg-white text-[#1E1B4B] hover:bg-[#EEF2FF]',
+        ghost: active ? 'bg-white text-[#1E1B4B] dark:bg-slate-800 dark:text-slate-100' : 'bg-white/10 text-white hover:bg-white/20',
+        solid: 'bg-white text-[#1E1B4B] hover:bg-[#EEF2FF] dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700',
         violet: active ? 'bg-[#5B21B6] text-white' : 'bg-[#6D28D9] text-white hover:bg-[#5B21B6]',
         amber: 'bg-[#F59E0B] text-[#1E1B4B] hover:bg-[#B45309] hover:text-white',
     };
@@ -41,6 +41,7 @@ export default function Navbar() {
 
     // Tambah menu cukup satu baris di sini, tampil di desktop dan mobile.
     const links = [
+        { href: '/', label: 'Beranda', tone: 'ghost', show: !!user },
         { href: '/dashboard', label: 'Dashboard', tone: 'ghost', show: !!user },
         { href: '/users', label: 'Pengguna', tone: 'ghost', show: !!user && can(perms, 'users:read') },
         { href: '/profile', label: 'Profil', tone: 'violet', show: !!user },

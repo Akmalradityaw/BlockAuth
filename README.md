@@ -1,4 +1,4 @@
-# BlockAuth `v2.0`
+# BlockAuth `v2.1.3`
 
 Modul autentikasi dan manajemen profil user untuk Laravel: registrasi dan login
 session, reset password via email, login sosial Google dan GitHub, edit data diri
@@ -15,7 +15,7 @@ Dokumentasi pendukung: `PRD.md` (spesifikasi produk), `RULES.md` (aturan arsitek
 
 | Komponen | Versi | Keterangan |
 |---|---|---|
-| BlockAuth (aplikasi) | `2.0` | UI v2 responsif + halaman Data Pengguna |
+| BlockAuth (aplikasi) | `2.1.3` | Login Username, Switch Role Instan, Dashboard Interaktif |
 | `PRD.md` | `1.0` | Spesifikasi produk, 2026-01-15 |
 | `RULES.md` | `2.0` | Aturan arsitektur dan palet v2 |
 | `DESIGN.md` | `2.0` | Design system indigo, violet, amber |

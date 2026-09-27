@@ -1,8 +1,8 @@
 const VARIANTS = {
-    info: { wrap: 'border-[#6D28D9]/25 bg-[#EEF2FF] text-[#1E1B4B]', icon: 'bg-[#6D28D9] text-white', glyph: 'i' },
-    success: { wrap: 'border-emerald-200 bg-emerald-50 text-emerald-900', icon: 'bg-emerald-500 text-white', glyph: '✓' },
-    warning: { wrap: 'border-amber-200 bg-amber-50 text-amber-900', icon: 'bg-[#F59E0B] text-[#1E1B4B]', glyph: '!' },
-    error: { wrap: 'border-red-200 bg-red-50 text-red-900', icon: 'bg-red-600 text-white', glyph: '!' },
+    info: { wrap: 'border-[#6D28D9]/25 bg-[#EEF2FF] text-[#1E1B4B] dark:bg-violet-950/40 dark:border-violet-800 dark:text-violet-200', icon: 'bg-[#6D28D9] text-white', glyph: 'i' },
+    success: { wrap: 'border-emerald-200 bg-emerald-50 text-emerald-900 dark:bg-emerald-950/40 dark:border-emerald-800 dark:text-emerald-200', icon: 'bg-emerald-500 text-white', glyph: '✓' },
+    warning: { wrap: 'border-amber-200 bg-amber-50 text-amber-900 dark:bg-amber-950/40 dark:border-amber-800 dark:text-amber-200', icon: 'bg-[#F59E0B] text-[#1E1B4B]', glyph: '!' },
+    error: { wrap: 'border-red-200 bg-red-50 text-red-900 dark:bg-red-950/40 dark:border-red-800 dark:text-red-200', icon: 'bg-red-600 text-white', glyph: '!' },
 };
 
 export default function Alert({ variant = 'info', title, children, onClose, className = '' }) {

@@ -37,28 +37,38 @@ export const toast = {
     dismiss: (id) => emit({ type: 'dismiss', id }),
 };
 
+export function showToast(msg, type = 'info') {
+    if (type === 'success') {
+        toast.success(msg);
+    } else if (type === 'error' || type === 'danger') {
+        toast.error(msg);
+    } else {
+        toast.info(msg);
+    }
+}
+
 const THEME = {
     success: {
-        badge: 'bg-emerald-100 text-emerald-700',
-        ring: 'ring-emerald-200',
+        badge: 'bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300',
+        ring: 'ring-emerald-200 dark:ring-emerald-900/50',
         glyph: '✓',
         accent: 'bg-emerald-500',
     },
     error: {
-        badge: 'bg-red-100 text-red-700',
-        ring: 'ring-red-200',
+        badge: 'bg-red-100 dark:bg-red-950/60 text-red-700 dark:text-red-300',
+        ring: 'ring-red-200 dark:ring-red-900/50',
         glyph: '!',
         accent: 'bg-red-500',
     },
     info: {
-        badge: 'bg-[#EEF2FF] text-[#6D28D9]',
-        ring: 'ring-[#6D28D9]/20',
+        badge: 'bg-[#EEF2FF] dark:bg-slate-800 text-[#6D28D9] dark:text-violet-400',
+        ring: 'ring-[#6D28D9]/20 dark:ring-violet-900/50',
         glyph: 'i',
         accent: 'bg-[#6D28D9]',
     },
     loading: {
-        badge: 'bg-[#EEF2FF] text-[#6D28D9]',
-        ring: 'ring-[#6D28D9]/20',
+        badge: 'bg-[#EEF2FF] dark:bg-slate-800 text-[#6D28D9] dark:text-violet-400',
+        ring: 'ring-[#6D28D9]/20 dark:ring-violet-900/50',
         glyph: null,
         accent: 'bg-[#F59E0B]',
     },
@@ -153,7 +163,7 @@ export default function Toast() {
                             key={t.id}
                             role="alertdialog"
                             aria-modal="true"
-                            className={`pointer-events-auto relative w-full overflow-hidden rounded-3xl bg-white px-6 pb-6 pt-8 text-center shadow-2xl ring-1 ${theme.ring} ${t.leaving ? 'ba-anim-out' : 'ba-anim-in'
+                            className={`pointer-events-auto relative w-full overflow-hidden rounded-3xl bg-white dark:bg-slate-900 border border-transparent dark:border-slate-800 px-6 pb-6 pt-8 text-center shadow-2xl ring-1 ${theme.ring} ${t.leaving ? 'ba-anim-out' : 'ba-anim-in'
                                 }`}
                         >
                             {/* Aksen garis atas */}
@@ -164,14 +174,14 @@ export default function Toast() {
                                 className={`mx-auto flex h-16 w-16 items-center justify-center rounded-2xl text-3xl font-extrabold ${theme.badge}`}
                             >
                                 {isLoading ? (
-                                    <span className="ba-spinner ba-spinner-lg border-slate-200 border-t-[#6D28D9]" />
+                                    <span className="ba-spinner ba-spinner-lg border-slate-200 dark:border-slate-700 border-t-[#6D28D9]" />
                                 ) : (
                                     theme.glyph
                                 )}
                             </span>
 
                             {/* Pesan */}
-                            <p className="mt-4 text-base font-semibold leading-snug text-[#1E1B4B]">
+                            <p className="mt-4 text-base font-semibold leading-snug text-[#1E1B4B] dark:text-slate-100">
                                 {t.msg}
                             </p>
 
@@ -187,7 +197,7 @@ export default function Toast() {
                             )}
 
                             {isLoading && (
-                                <p className="mt-2 text-xs font-medium text-slate-500">
+                                <p className="mt-2 text-xs font-medium text-slate-500 dark:text-slate-400">
                                     Mohon tunggu…
                                 </p>
                             )}

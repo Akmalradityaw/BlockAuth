@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+    darkMode: 'class',
     content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
@@ -62,9 +63,28 @@ export default {
                     warning: '#B45309',
                     error: '#B91C1C',
                 },
+                'blockauth-dark': {
+                    primary: '#8B5CF6',
+                    'primary-content': '#FFFFFF',
+                    secondary: '#312E81',
+                    'secondary-content': '#FFFFFF',
+                    accent: '#F59E0B',
+                    'accent-content': '#1E1B4B',
+                    neutral: '#1E293B',
+                    'neutral-content': '#F8FAFC',
+                    'base-100': '#0F172A',
+                    'base-200': '#0B0F19',
+                    'base-300': '#1E293B',
+                    'base-content': '#F8FAFC',
+                    info: '#8B5CF6',
+                    success: '#22C55E',
+                    warning: '#F59E0B',
+                    error: '#EF4444',
+                },
             },
             'light',
+            'dark',
         ],
-        darkTheme: 'light',
+        darkTheme: 'blockauth-dark',
     },
 };

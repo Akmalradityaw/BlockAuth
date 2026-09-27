@@ -1,5 +1,11 @@
 # Changelog BlockAuth
 
+## v2.1.3 - 2026-09-27
+- **Fitur Baru**: Login bisa menggunakan `username` atau `email`.
+- **Fitur Baru**: *Switch Role* instan pada halaman Data Pengguna via dropdown untuk SuperAdmin.
+- **Pembaruan UI**: Diagram Dashboard dirombak ke gaya *Crypto/Trading* (Area Chart bergradasi) menggunakan ApexCharts.
+- **Perbaikan**: Sidebar menu sekarang mempertahankan *scroll position* (interaktif) saat navigasi menu.
+- **Perbaikan Bug**: Perbaikan `DataTable` yang sempat mengalami error saat rendering parameter.
 ## v2.1 - 2026-09-13
 - Sidebar fixed kiri dengan offset konten, drawer overlay di HP.
 - Komponen feedback: Toast global, ConfirmDialog, Alert, LoadingOverlay.

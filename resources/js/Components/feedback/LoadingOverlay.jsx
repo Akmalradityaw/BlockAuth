@@ -45,16 +45,16 @@ export default function LoadingOverlay({ active, text = 'Memuat…' }) {
     if (!state.active) return null;
 
     return (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-[#1E1B4B]/60 p-4 backdrop-blur-sm">
-            <div className="ba-anim-in relative w-full max-w-md overflow-hidden rounded-3xl bg-white px-6 pb-6 pt-8 text-center shadow-2xl">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-[#1E1B4B]/60 dark:bg-black/70 p-4 backdrop-blur-sm">
+            <div className="ba-anim-in relative w-full max-w-md overflow-hidden rounded-3xl bg-white dark:bg-slate-900 border border-transparent dark:border-slate-800 px-6 pb-6 pt-8 text-center shadow-2xl">
                 <span className="absolute inset-x-0 top-0 h-1.5 bg-[#F59E0B]" />
 
-                <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-[#EEF2FF]">
-                    <span className="ba-spinner ba-spinner-lg border-slate-200 border-t-[#6D28D9]" />
+                <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-[#EEF2FF] dark:bg-slate-800">
+                    <span className="ba-spinner ba-spinner-lg border-slate-200 dark:border-slate-700 border-t-[#6D28D9]" />
                 </span>
 
-                <p className="mt-4 text-lg font-bold text-[#1E1B4B]">{state.text}</p>
-                <p className="mt-1 text-sm text-slate-500">Mohon tunggu sebentar…</p>
+                <p className="mt-4 text-lg font-bold text-[#1E1B4B] dark:text-slate-100">{state.text}</p>
+                <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Mohon tunggu sebentar…</p>
             </div>
         </div>
     );
