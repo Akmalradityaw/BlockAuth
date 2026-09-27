@@ -25,6 +25,7 @@ class RoleSeeder extends Seeder
             ['email' => 'admin@blockauth.test'],
             [
                 'name' => 'Super Admin',
+                'username' => 'admin',
                 'password' => Hash::make('password'),
                 'email_verified_at' => now(),
                 'bio' => 'Akun administrator utama.',

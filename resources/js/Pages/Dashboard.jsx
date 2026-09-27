@@ -28,21 +28,21 @@ export default function Dashboard({ stats, recentUsers = [], isSuperAdmin, chart
                 <StatCard label="SuperAdmin" value={stats.admins} note="Akses penuh ke data pengguna" />
             </div>
             <section className="card-shell mt-4 p-4 sm:p-6">
-                <h2 className="type-h2 text-[#1E1B4B]">Pendaftar 14 hari terakhir</h2>
+                <h2 className="type-h2 text-[#1E1B4B] dark:text-slate-100">Pendaftar 14 hari terakhir</h2>
                 <div className="mt-3">
                     <RegistrationsChart labels={chart.labels} data={chart.data} />
                 </div>
             </section>
             <section className="card-shell mt-4 p-4 sm:p-6">
                 <div className="mb-4 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
-                    <h2 className="type-h2 text-[#1E1B4B]">Pengguna terbaru</h2>
+                    <h2 className="type-h2 text-[#1E1B4B] dark:text-slate-100">Pengguna terbaru</h2>
                     {isSuperAdmin && (
-                        <Link href="/users" className="type-small font-semibold text-[#6D28D9]">
+                        <Link href="/users" className="type-small font-semibold text-[#6D28D9] dark:text-violet-400">
                             Buka semua data
                         </Link>
                     )}
                 </div>
-                <ul className="divide-y divide-slate-200">
+                <ul className="divide-y divide-slate-200 dark:divide-slate-800">
                     {recentUsers.map((u) => (
                         <li key={u.id} className="flex items-center gap-3 py-3">
                             {u.avatar_url ? (
@@ -53,8 +53,8 @@ export default function Dashboard({ stats, recentUsers = [], isSuperAdmin, chart
                                 </span>
                             )}
                             <div className="min-w-0 flex-1">
-                                <p className="truncate text-sm font-semibold text-[#1E1B4B] sm:text-base">{u.name}</p>
-                                <p className="type-small truncate text-[#334155]">{u.email}</p>
+                                <p className="truncate text-sm font-semibold text-[#1E1B4B] dark:text-slate-100 sm:text-base">{u.name}</p>
+                                <p className="type-small truncate text-[#334155] dark:text-slate-400">{u.email}</p>
                                 <div className="mt-1 sm:hidden">
                                     <RoleBadge roles={u.roles} />
                                 </div>
@@ -62,12 +62,12 @@ export default function Dashboard({ stats, recentUsers = [], isSuperAdmin, chart
                             <div className="hidden shrink-0 sm:block">
                                 <RoleBadge roles={u.roles} />
                             </div>
-                            <span className="type-small hidden shrink-0 text-[#334155] md:block">{u.joined}</span>
+                            <span className="type-small hidden shrink-0 text-[#334155] dark:text-slate-400 md:block">{u.joined}</span>
                         </li>
                     ))}
                 </ul>
                 {recentUsers.length === 0 && (
-                    <p className="type-small py-6 text-center text-[#334155]">Belum ada data pengguna.</p>
+                    <p className="type-small py-6 text-center text-[#334155] dark:text-slate-400">Belum ada data pengguna.</p>
                 )}
             </section>
         </AppLayout>

@@ -12,6 +12,11 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             RbacSeeder::class,
             UserSeeder::class,
+            EmailTemplateSeeder::class,
+            AccessPolicySeeder::class,
+            OrganizationSeeder::class,
+            OAuthClientSeeder::class,
+            SecurityTicketSeeder::class,
         ]);
     }
 }

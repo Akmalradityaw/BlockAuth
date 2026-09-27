@@ -48,6 +48,11 @@ class RolePermissionController extends Controller
             Role::findOrFail($roleId)->syncPermissions($perms);
         }
 
+        \App\Models\AuditLog::record(
+            'roles:permissions_update',
+            'Memperbarui konfigurasi matriks hak akses dan izin peran'
+        );
+
         return back()->with('success', 'Matriks permission berhasil disimpan.');
     }
 }

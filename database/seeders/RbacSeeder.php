@@ -25,12 +25,14 @@ class RbacSeeder extends Seeder
                     'roles:manage',
                     'settings:read',
                     'settings:manage',
+                    'audit_logs:read',
+                    'users:impersonate',
                 ],
             ],
             'Manager' => [
                 'label' => 'Manager',
                 'description' => 'Pimpinan operasional, CRUD data bisnis.',
-                'permissions' => ['users:create', 'users:read', 'users:update', 'users:delete'],
+                'permissions' => ['users:create', 'users:read', 'users:update', 'users:delete', 'audit_logs:read'],
             ],
             'Editor' => [
                 'label' => 'Editor',
