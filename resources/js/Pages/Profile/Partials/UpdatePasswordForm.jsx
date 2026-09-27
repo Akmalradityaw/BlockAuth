@@ -1,6 +1,7 @@
 import { useForm } from '@inertiajs/react';
 import FormInput from '@/Components/forms/FormInput';
 import SolidButton from '@/Components/forms/SolidButton';
+import PasswordStrengthMeter from '@/Components/forms/PasswordStrengthMeter';
 
 export default function UpdatePasswordForm() {
     const { data, setData, put, processing, errors, reset } = useForm({
@@ -16,8 +17,8 @@ export default function UpdatePasswordForm() {
 
     return (
         <section className="card-shell p-4 sm:p-6">
-            <h2 className="type-h2 text-[#1E1B4B]">Keamanan akun</h2>
-            <p className="type-small mt-1 text-[#334155]">Gunakan password kuat yang belum dipakai di tempat lain.</p>
+            <h2 className="type-h2 text-[#1E1B4B] dark:text-slate-100">Keamanan akun</h2>
+            <p className="type-small mt-1 text-[#334155] dark:text-slate-400">Gunakan password kuat yang belum dipakai di tempat lain.</p>
             <form onSubmit={submit} className="mt-4 flex flex-col gap-3">
                 <FormInput
                     label="Password saat ini"
@@ -47,6 +48,7 @@ export default function UpdatePasswordForm() {
                         required
                     />
                 </div>
+                <PasswordStrengthMeter password={data.password} />
                 <SolidButton processing={processing} variant="amber">
                     Perbarui password
                 </SolidButton>
